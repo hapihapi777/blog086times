@@ -3,12 +3,15 @@ import os
 import psycopg2
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import desc
+from boto.s3.connection import S3Connection
 
 app = Flask(__name__)
 
+s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 # db_uri = os.environ.get('DATABASE_URL') or "postgresql://localhost/blog"
-db_uri = "postgresql://ucisgcrsvynlud:17ddf90852366f1446ea2d1b3e9b95032cdc9f0bdd444a7446b2c7304604e18d@ec2-54-159-22-90.compute-1.amazonaws.com:5432/dd9rlcfn5lcueh"
-app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+# db_uri = "postgresql://ucisgcrsvynlud:17ddf90852366f1446ea2d1b3e9b95032cdc9f0bdd444a7446b2c7304604e18d@ec2-54-159-22-90.compute-1.amazonaws.com:5432/dd9rlcfn5lcueh"
+# app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+app.config['SQLALCHEMY_DATABASE_URI'] = s3
 db = SQLAlchemy(app)
 
 class Entry(db.Model):
