@@ -1,0 +1,40 @@
+<html>
+<body>
+  githubへpushすると自動でデプロイしてくれる
+  <h1>blog 086 times</h1>
+  <hr>
+
+  <form action="/post" method="post">
+    <p><input type="text" name="title" placeholder="タイトル" id=""></p>
+    <p><textarea rows="5" cols="60" name="body" placeholder="本文" id=""></textarea></p>
+    <p><input type="password" name="password" placeholder="password" id=""><input type="submit" value="投稿"></p>
+  </form>
+
+  <hr>
+  {% for entry in entries %}
+  <!-- <p>{{ entry.id }}</p> -->
+  <h3>{{ entry.title }}</h3>
+    {% set es = entry.body.split('\r\n') %}
+    {% for e in es %}
+      <p>{{ e }}</p>
+    {% endfor %}
+
+    <div>
+      <form action="/update" method="post">
+        <p><input type="hidden" name="post_id" value="{{ entry.id }}" id=""></p>
+        <p><input type="submit" value="更新"></p>
+      </form>
+    </div>
+
+    <div>
+      <form action="/delete" method="post">
+        <p><input type="hidden" name="post_id" value="{{ entry.id }}" id=""></p>
+        <p><input type="password" name="password" placeholder="password" id=""><input type="submit" value="削除"></p>
+      </form>
+    </div>
+  </div>
+  <hr>
+  {% endfor %}
+
+</body>
+</html>

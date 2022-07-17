@@ -1,0 +1,10 @@
+<html>
+<body>
+    <form action="/update_post" method="post">
+        <p><input type="text" name="title" placeholder="タイトル" value="{{ entry.title }}" id=""></p>
+        <p><textarea rows="5" cols="60" name="body" placeholder="本文" id="">{{ entry.body }}</textarea></p>
+        <p><input type="hidden" name="post_id" value="{{ entry.id }}" id=""></p>
+        <p><input type="password" name="password" placeholder="password" id=""><input type="submit" value="更新"></p>
+    </form>
+</body>
+</html>
