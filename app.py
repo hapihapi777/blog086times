@@ -7,7 +7,7 @@ from sqlalchemy import desc
 app = Flask(__name__)
 
 # db_uri = os.environ.get('DATABASE_URL') or "postgresql://localhost/blog"
-db_uri = "postgresql://jfwcbbxfvjylzw:62a5c2ccfa32861ed2803b9588adea30a18df6051aa15bb68edad08d1396efd6@ec2-18-214-35-70.compute-1.amazonaws.com:5432/d2uo3bne364pp2"
+db_uri = "postgresql://jfwcbbxfvjylzw :62a5c2ccfa32861ed2803b9588adea30a18df6051aa15bb68edad08d1396efd6@ec2-18-214-35-70.compute-1.amazonaws.com:5432/d2uo3bne364pp2"
 # DATABASE_URL=$(heroku config:get DATABASE_URL -a your-app) your_process
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 db = SQLAlchemy(app)
